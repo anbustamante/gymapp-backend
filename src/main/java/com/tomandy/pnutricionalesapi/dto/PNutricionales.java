@@ -1,4 +1,4 @@
-package com.tomandy.ejerciciosapi.dto;
+package com.tomandy.pnutricionalesapi.dto;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ public class PNutricionales {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="nutr_id")
     private Long id;
-    @Column(name="path")
+    @Column(name="nutr_path")
     private String path;
 
 }

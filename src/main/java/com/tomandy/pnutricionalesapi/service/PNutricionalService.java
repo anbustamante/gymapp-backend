@@ -1,7 +1,7 @@
-package com.tomandy.ejerciciosapi.service;
+package com.tomandy.pnutricionalesapi.service;
 
-import com.tomandy.ejerciciosapi.dao.PNutricionalDao;
-import com.tomandy.ejerciciosapi.dto.PNutricionales;
+import com.tomandy.pnutricionalesapi.dao.PNutricionalDao;
+import com.tomandy.pnutricionalesapi.dto.PNutricionales;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

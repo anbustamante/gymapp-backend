@@ -1,7 +1,7 @@
-package com.tomandy.ejerciciosapi.controller;
+package com.tomandy.pnutricionalesapi.controller;
 
-import com.tomandy.ejerciciosapi.dto.PNutricionales;
-import com.tomandy.ejerciciosapi.service.PNutricionalService;
+import com.tomandy.pnutricionalesapi.dto.PNutricionales;
+import com.tomandy.pnutricionalesapi.service.PNutricionalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +16,7 @@ public class PNutricionalController {//Holamou
         this.service = service;
     }
 
-    @GetMapping("/p_nutricionales")
+    @GetMapping("/p_nutricional")
     public List<PNutricionales> getPNutricionalDTO(){
 
         return service.getAll();
