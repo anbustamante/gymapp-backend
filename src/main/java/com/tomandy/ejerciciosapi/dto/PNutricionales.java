@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Table(name = "p_nutricionales")
 public class PNutricionales {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="nutr_id")
     private Long id;
-    @Column(name="path")
+    @Column(name="nutr_path")
     private String path;
 
 }
