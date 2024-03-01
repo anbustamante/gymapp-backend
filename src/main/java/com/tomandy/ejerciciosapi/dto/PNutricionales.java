@@ -18,4 +18,7 @@ public class PNutricionales {
     @Column(name="nutr_path")
     private String path;
 
+
+
 }
+

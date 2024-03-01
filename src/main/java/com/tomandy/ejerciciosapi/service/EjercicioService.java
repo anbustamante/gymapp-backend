@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EjercicioService {
@@ -19,6 +20,30 @@ public class EjercicioService {
     public List<Exercises> getAll() {
         return dao.findAll();
     }
+
+    public Optional<Exercises> getById(String id){
+        return dao.findById(Long.valueOf(id));
+    }
+
+    public String delete(Long id){
+        Exercises ejercicio = dao.getById(id);
+        if(ejercicio==null){
+            return "Ejercicio no encontrado";
+        }
+        dao.deleteById(id);
+        return "Ejercicio eliminado con id: "+id + " Con nombre: " +ejercicio.getNombre();
+    }
+
+    public Exercises update(Exercises ejercicio){
+        return dao.save(ejercicio);
+    }
+    public Exercises save(Exercises ejercicio){
+        return dao.save(ejercicio);
+    }
+
+
+
+
 }
 
 
