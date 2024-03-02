@@ -41,6 +41,13 @@ public class EjercicioService {
         return dao.save(ejercicio);
     }
 
+    public String getByName(String name){
+        Exercises ejercicio = dao.getByNombre(name);
+        if(ejercicio==null){
+            return "Ejercicio no encontrado";
+        }
+        return ejercicio.getDescripcion();
+    }
 
 
 

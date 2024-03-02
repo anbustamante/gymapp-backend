@@ -38,4 +38,9 @@ public class EjercicioController {//Holamou
     public  ResponseEntity<Exercises> updateEjercicio(@RequestBody Exercises ejercicio){
         return ResponseEntity.ok(service.update(ejercicio));
     }
+
+    @GetMapping("/ejercicio/descr")
+    public ResponseEntity<String> getDescriptionByName(@RequestParam(required = false, value="name") String name){
+        return ResponseEntity.ok(service.getByName(name));
+    }
 }
