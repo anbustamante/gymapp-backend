@@ -15,7 +15,7 @@ public class PNutricionales {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="nutr_id")
     private Long id;
-    @Column(name="nutr_path")
+    @Column(name="path")
     private String path;
 
 
