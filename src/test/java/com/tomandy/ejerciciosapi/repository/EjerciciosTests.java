@@ -23,7 +23,7 @@ public class EjerciciosTests {
     @Test
     public void testSavingEjercicio(){
         ejercicioDao.deleteAll(); /* PARA LIMPIAR LA DB */
-        Exercises ejercicio = Exercises.builder().id(1L).nombre("Ejercicio Prueba").descripcion("Descripcion Prueba").build();
+        Exercises ejercicio = Exercises.builder().id(20L).nombre("Ejercicio Prueba").descripcion("Descripcion Prueba").build();
 
         Exercises savedEjercicio = ejercicioDao.save(ejercicio);
 
@@ -35,11 +35,13 @@ public class EjerciciosTests {
     public void testDeletingEjercicio(){
         Exercises ejercicio = Exercises.builder().id(1L).nombre("Ejercicio Prueba").descripcion("Descripcion Prueba").build();
         ejercicioDao.save(ejercicio);
+        int size = ejercicioDao.findAll().size();
 
         ejercicioDao.delete(ejercicio);
 
         Optional<Exercises> ejercicioBorrado = ejercicioDao.findById(1L);
         Assertions.assertThat(ejercicioBorrado).isEmpty();
+        Assertions.assertThat(ejercicioDao.findAll()).hasSize( size-1);
     }
     @Test
     public void testFindById(){
@@ -65,17 +67,16 @@ public class EjerciciosTests {
     public void testUpdateEjercicio(){
         Exercises ejercicio = Exercises.builder().id(1L).nombre("Ejercicio Prueba").descripcion("Descripcion Prueba").build();
         ejercicioDao.save(ejercicio);
+        int size = ejercicioDao.findAll().size();
 
         ejercicio.setNombre("Ejercicio Prueba Modificado");
         ejercicio.setDescripcion("Descripcion Prueba Modificada");
         ejercicioDao.save(ejercicio);
-
         Exercises ejercicioGuardado = ejercicioDao.findById(1L).get();
-        System.out.println(ejercicioDao.findAll());
 
+        Assertions.assertThat(ejercicioDao.findAll()).hasSize(size); // No se agregaron ni se quitaron
         Assertions.assertThat(ejercicioGuardado.getNombre()).isEqualTo("Ejercicio Prueba Modificado");
         Assertions.assertThat(ejercicioGuardado.getDescripcion() ).isEqualTo("Descripcion Prueba Modificada");
-
     }
 
 

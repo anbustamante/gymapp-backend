@@ -21,6 +21,7 @@ public class PNutricionalService {
         return dao.findAll();
     }
 
+    public Optional<PNutricionales> getById(String id) {return dao.findById(Long.valueOf(id));}
     public String delete(Long id) {
         PNutricionales plan = dao.getById(id);
         if(plan == null){
@@ -30,17 +31,13 @@ public class PNutricionalService {
         return "Plan eliminado con id: "+id;
     }
 
+    public PNutricionales update(PNutricionales plan) {
+        return  dao.save(plan);
+    }
     public PNutricionales save(PNutricionales plan) {
         return dao.save(plan);
     }
 
-    public PNutricionales update(PNutricionales plan) {
-        return  dao.save(plan);
-    }
-
-    public Optional<PNutricionales> getById(Long id) {
-        return dao.findById(id);
-    }
 }
 
 

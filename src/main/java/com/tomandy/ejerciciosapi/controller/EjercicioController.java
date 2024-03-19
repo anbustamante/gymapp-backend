@@ -19,7 +19,6 @@ public class EjercicioController {//Holamou
 
     @GetMapping("/ejercicio")
     public ResponseEntity<List<Exercises>> getEjercicioDTO(){//HOLALOGICA
-
         return ResponseEntity.ok(service.getAll());
          }
     @DeleteMapping("/ejercicio/{id}")

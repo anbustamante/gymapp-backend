@@ -1,5 +1,6 @@
 package com.tomandy.ejerciciosapi.controller;
 
+import com.tomandy.ejerciciosapi.dto.Exercises;
 import com.tomandy.ejerciciosapi.dto.PNutricionales;
 import com.tomandy.ejerciciosapi.service.PNutricionalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,11 @@ public class PNutricionalController {
     }
 
     @GetMapping("/p_nutricionales")
-    public List<PNutricionales> getPNutricionalDTO(){
-        return service.getAll();
+    public ResponseEntity<List<PNutricionales>> getPNutricionalDTO(){
+        return ResponseEntity.ok(service.getAll());
          }
     @GetMapping("/p_nutricionales/{id}")
-    public ResponseEntity<Optional<PNutricionales>> getPNutricionalById(@PathVariable Long id){
+    public ResponseEntity<Optional<PNutricionales>> getPNutricionalById(@PathVariable String id){
         return ResponseEntity.ok(service.getById(id));
     }
     @DeleteMapping("/p_nutricionales/{id}")
