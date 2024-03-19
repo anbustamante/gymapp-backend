@@ -21,20 +21,23 @@ public class PNutricionalService {
         return dao.findAll();
     }
 
-    public Optional<PNutricionales> getById(String id) {return dao.findById(Long.valueOf(id));}
-    public String delete(Long id) {
+    public Optional<PNutricionales> getById(String id){
+        return dao.findById(Long.valueOf(id));
+    }
+
+    public String delete(Long id){
         PNutricionales plan = dao.getById(id);
-        if(plan == null){
+        if(plan==null){
             return "Plan no encontrado";
         }
         dao.deleteById(id);
-        return "Plan eliminado con id: "+id;
+        return "Plan eliminado con id: "+id + " Con path: " +plan.getPath();
     }
 
-    public PNutricionales update(PNutricionales plan) {
-        return  dao.save(plan);
+    public PNutricionales update(PNutricionales plan){
+        return dao.save(plan);
     }
-    public PNutricionales save(PNutricionales plan) {
+    public PNutricionales save(PNutricionales plan){
         return dao.save(plan);
     }
 

@@ -1,6 +1,5 @@
 package com.tomandy.ejerciciosapi.controller;
 
-import com.tomandy.ejerciciosapi.dto.Exercises;
 import com.tomandy.ejerciciosapi.dto.PNutricionales;
 import com.tomandy.ejerciciosapi.service.PNutricionalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 public class PNutricionalController {
+
     private PNutricionalService service;
     @Autowired
     public PNutricionalController(PNutricionalService service) {
@@ -19,16 +19,16 @@ public class PNutricionalController {
     }
 
     @GetMapping("/p_nutricionales")
-    public ResponseEntity<List<PNutricionales>> getPNutricionalDTO(){
+    public ResponseEntity<List<PNutricionales>> getPNutricionalDTO(){//HOLALOGICA
         return ResponseEntity.ok(service.getAll());
-         }
-    @GetMapping("/p_nutricionales/{id}")
-    public ResponseEntity<Optional<PNutricionales>> getPNutricionalById(@PathVariable String id){
-        return ResponseEntity.ok(service.getById(id));
     }
     @DeleteMapping("/p_nutricionales/{id}")
     public ResponseEntity<String> deletePNutricional(@PathVariable Long id){
         return ResponseEntity.ok(service.delete(id));
+    }
+    @GetMapping("/p_nutricionales/{id}")
+    public ResponseEntity<Optional<PNutricionales>> getPNutricionalById(@PathVariable String id){
+        return ResponseEntity.ok(service.getById(id));
     }
     @PostMapping("/p_nutricionales")
     public  ResponseEntity<PNutricionales> savePNutricional(@RequestBody PNutricionales plan){
@@ -38,6 +38,5 @@ public class PNutricionalController {
     public  ResponseEntity<PNutricionales> updatePNutricional(@RequestBody PNutricionales plan){
         return ResponseEntity.ok(service.update(plan));
     }
-
 
 }

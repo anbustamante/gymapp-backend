@@ -1,7 +1,6 @@
 package com.tomandy.ejerciciosapi.repository;
 
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.tomandy.ejerciciosapi.dao.PNutricionalDao;
 import com.tomandy.ejerciciosapi.dto.PNutricionales;
 import org.assertj.core.api.Assertions;
@@ -59,21 +58,18 @@ public class PNutricionalesTests {
     }
     @Test
     public void testUpdatePNutricional(){
-        PNutricionales plan = PNutricionales.builder().id(1L).path("Path Prueba").build();
-        PNutricionales pum = PNutrDao.save(plan);
-        System.out.println(plan.getId());
-        System.out.println(pum.getId());
+        PNutricionales plan = PNutricionales.builder().path("Path Prueba").build();
+        PNutricionales savedPlan = PNutrDao.save(plan);
+        Long id = savedPlan.getId(); // Obtener el ID del plan nutricional guardado
         int size = PNutrDao.findAll().size();
 
-        plan.setPath("Path de Prueba Modificado");
-        PNutrDao.save(plan);
-        System.out.println(PNutrDao.findAll());
-
-        PNutricionales planGuardado = PNutrDao.findById(1L).get();
+        savedPlan.setPath("Path de Prueba Modificado");
+        PNutrDao.save(savedPlan);
+        PNutricionales planGuardado = PNutrDao.findById(id).get();
 
         Assertions.assertThat(PNutrDao.findAll()).hasSize(size); // No se agregaron ni se quitaron
+        Assertions.assertThat(planGuardado).isNotNull();
         Assertions.assertThat(planGuardado.getPath()).isEqualTo("Path de Prueba Modificado");
-
     }
 
 
