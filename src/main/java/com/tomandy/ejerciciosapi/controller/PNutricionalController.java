@@ -18,23 +18,23 @@ public class PNutricionalController {
         this.service = service;
     }
 
-    @GetMapping("/p_nutricional")
+    @GetMapping("/p_nutricionales")
     public ResponseEntity<List<PNutricionales>> getPNutricionalDTO(){//HOLALOGICA
         return ResponseEntity.ok(service.getAll());
     }
-    @DeleteMapping("/p_nutricional/{id}")
+    @DeleteMapping("/p_nutricionales/{id}")
     public ResponseEntity<String> deletePNutricional(@PathVariable Long id){
         return ResponseEntity.ok(service.delete(id));
     }
-    @GetMapping("/p_nutricional/{id}")
+    @GetMapping("/p_nutricionales/{id}")
     public ResponseEntity<Optional<PNutricionales>> getPNutricionalById(@PathVariable String id){
         return ResponseEntity.ok(service.getById(id));
     }
-    @PostMapping("/p_nutricional")
+    @PostMapping("/p_nutricionales")
     public  ResponseEntity<PNutricionales> savePNutricional(@RequestBody PNutricionales plan){
         return ResponseEntity.ok(service.save(plan));
     }
-    @PutMapping("/p_nutricional")
+    @PutMapping("/p_nutricionales")
     public  ResponseEntity<PNutricionales> updatePNutricional(@RequestBody PNutricionales plan){
         return ResponseEntity.ok(service.update(plan));
     }
